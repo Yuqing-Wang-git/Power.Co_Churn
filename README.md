@@ -155,21 +155,58 @@ key findings:
 
 #### Price and date of modification
 
-We need to define the scope carefully, since the price history data only covers the year of 2015, clients with `date_end` prior to Jan 1st, 2016 should not be included. Besides, We need to mostly pay attention to those who had modified their product subscription when investigating client behavior with price fluctuation. 
+We need to define the scope carefully, since the price history data only covers the year of 2015, clients with `date_end` prior to Jan 1st, 2016 should not be included. Besides, We need to mostly pay attention to those who had modified their product subscription during 2015 when investigating client behavior with price fluctuation. 
 
 ![Modification_Timelines_chart](images/Modification_Timelines_chart.png)
 
 ![Modification_Timelines](images/Modification_Timelines.png)
 
 
+##### 1:  The 2015 Modification Spike
+
+* **Observation:** there is the massive concentration of account modification activity in a single: 34.1% or more of clients last modified their product subscriptions during 2015, and only 14.9% (2,176 clients) hold contracts that were last modified in any other year (spanning from 2003 up to 2016).
+
+* **What this means:** the 2015 spike  indicates a major structural event occurred in 2015. This was likely a forced migration, a massive pricing update, a company-wide campaign, or a large batch of legacy contracts all expiring simultaneously, forcing clients to select new terms.
+
+
+##### 2. The Churn Rate Breakdown
+
+* **Observation:**
+Modified in 2015: 9.8% Churn Rate (1,215 lost clients / 11,215 retained).
+Other Years: 9.4% Churn Rate (204 lost clients / 1,972 retained)
+
+* **What this means:** Clients who touched their accounts in 2015 are churning at a slightly higher rate than clients sitting on older (or newer) legacy plans.
 
 
 ![combined_modification_and_fixed_price_trends](images/combined_modification_and_fixed_price_trends.png)
 
+##### 1. The Fixed Price Chart
+
+* **Observation:** Overall, the modification volume (bars) strongly correlates with the volatility of fixed capacity rates (lines). Following eight months of relative price stability and negligible account activity, a sudden, sharp spike in the Peak fixed rate in September triggered a massive, sustained surge in modifications throughout Q4.
+
+* **What it means:** This lagging correlation proves that account attrition is highly event-driven; enterprise clients will passively accept stable base rates but will immediately and defensively renegotiate or downgrade their contracts in response to sudden pricing shocks.
+
 
 ![combined_modification_and_price_trends](images/combined_modification_and_price_trends.png)
 
+##### 2. The variable Price Chart
 
+* **Observation:**
+
+The overall volatility in pricing trends does not show a strong or consistent correlation with the volume of account modifications for that year.
+
+* **What it means:**
+The variable price doesn't seem like a trigger for product plan modification. 
+
+![combined_correlation_dashboard](images/combined_correlation_dashboard.png)
+
+
+##### 1. Prices and modification date correlation heatmap
+
+
+##### 2. Prices and churn correlation heatmap
+
+### Conclusion: 
 
 
 ## Recommendations
