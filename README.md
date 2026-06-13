@@ -16,13 +16,15 @@
 
         *[Pricing Data](#pricing-data)
 
+  * [Churn and price sensitivity  hypothesis](#price-sensitivity-and-churn-hypothesis)
 
-    
-* [Churn and price sensitivity  hypothesis](#price-sensitivity-and-churn-hypothesis)
+      * [Churn and client profile](#churn-and-client-profile)
 
-    * [Churn and client profile](#Churn_and_client_profile])
+      * [Price and date of modification](#price-and-date-of-modification)
 
-    * [Price and date of modification](#Price_and_date_of_modification])
+  * [Recommendations](#recommendations)
+
+
 
 * [Clarifying Questions, Assumptions, and Caveats](#clarifying-questions-assumptions-and-caveats)
     * [Questions for Stakeholders Prior to Project Advancement](#questions-for-stakeholders-prior-to-project-advancement)
@@ -104,15 +106,6 @@ To investigate distinct client profiles across the portfolio, we analyze four co
 * **Structural Skewness:** All operational and financial features exhibit heavy right-skewness. This indicates that PowerCo's portfolio is heavily built on Small and Medium Enterprises (SMEs), with a long tail of high-volume industrial outliers.
 
 * **Financial Risk Implication:** Most customers generate low margins. This makes overall company profitability highly vulnerable to the loss or churn of a few high-value accounts.
-
-
-
-
-
-
-
-
-
 
 #### Pricing Data
 
@@ -203,25 +196,46 @@ The variable price doesn't seem like a trigger for product plan modification.
 
 ##### 1. Prices and modification date correlation heatmap
 
+* **Observation:** The data shows a severe positive correlation (ranging from 0.85 to 0.88 in key tiers) between rising market prices and the volume of account modifications.
+
+* **What it means:** Customers are highly price-sensitive; when rates spike, they will immediately demand plan adjustments and renegotiations.
 
 ##### 2. Prices and churn correlation heatmap
 
+* **Observation:** Across all six pricing tiers, the statistical correlation between the average price a client pays and their likelihood to churn is essentially zero (ranging from -0.046 to +0.046).
+
+* **What it means:** Higher prices do not cause customers to abandon the company. Even though they complain and modify their contracts, the price itself is not driving them to leave.
+
 ### Conclusion: 
+
+**An analysis of the 2015 client portfolio challenges the hypothesis that high prices primarily drove customer churn.** Visual trend lines from the year reveal a massive, concentrated surge in contract modifications during the fall months, aligning closely with periods of pricing volatility. This behavioral shift is supported by macro-level correlation data, which shows a strong relationship between price increases and these modifications (with r-values reaching up to 0.88 in key tiers), suggesting the customer base is highly price-sensitive and quick to renegotiate when rates rise. However, despite this aggressive wave of defensive account updates, micro-level data reveals no significant statistical link between the average annual price a client paid and their likelihood to actually leave the company. 
 
 
 ## Recommendations
-Based on your findings above, list your strategic, actionable recommendations for the business.
 
-## Clarifying Questions, Assumptions, and Caveats
-An introductory sentence regarding the gaps in the data or initial scope constraints.
+### 1. Advertising & Acquisition Strategy
 
-### Questions for Stakeholders Prior to Project Advancement
-List out questions you would ask data engineering, product managers, or business leaders before taking this project to the next step.
+The `sale_channel` data shows a major acquisition mismatch across PowerCo's sales streams: One massive channel brings in the highest volume of clients but suffers from a high churn rate(12.14%) compared to the total average(9.7%), while other smaller channels bring in relatively low-churn accounts.
+(channels have been renamed, for example, foosdfpfkusacimwkcsosbicdxkicaua→channel 5)
 
-
+![channel_performance_1x3_dashboard](images/channel_performance_1x3_dashboard.png)
 
 
-testing changes
+* **Shift Budget to High-Retention Channels:** Move marketing capital away from high-churn sales streams and invest it directly into low-churn channels to protects your revenue and increases long-term customer value.
+
+* **Expand Channel 6 and channel 1 Campaigns:** Increase funding and sales resources specifically for Channel 6 and channel 1, since they  have surprising low churn-rate of 5.59% and 7.60% and big volume of 38.1% of total sale combined. 
+
+### 2. Price Strategy
+
+* **Offer Targeted Fixed-Fee Discounts or Variable Transitions:** While general pricing is not the primary driver of overall customer churn, a substantial segment of business owners are exceptionally sensitive to static fixed-price shifts. To neutralize this trigger, proactively offer direct discounts on high monthly fixed base fees or absorb them into slightly adjusted, predictable variable usage rates. Providing either a lowered flat fee or a utilization-based invoice satisfies their fixed-cost sensitivity and prevents them from exploring competitor offers.
+
 
 ### Assumptions and Caveats
-Detail the data limitations, missing timelines, or specific contexts assumed during your EDA.
+
+* **Severe Historical Horizon Limit: The pricing dataset (merged_2015_price_df) strictly spans a single calendar year (2015). Because of this complete lack of multi-year historical pricing data, it is impossible to determine if observed behaviors are long-term structural trends or just temporary, one-off seasonal anomalies.**
+
+* **Static Snapshot Constraint: The dataset only tracks a client's latest status and their most recent date of modification. Lacking continuous historical tracking or time-series snapshots makes it difficult to model how an account's consumption habits, contract terms, or pricing plans evolved over time before they decided to churn.**
+
+* **No External Context: The analysis assumes a completely static market landscape. It lacks crucial external datasets, such as aggressive competitor marketing moves, regional utility price shifts, or localized economic health changes that heavily impact client attrition.**
+
+* **Missing Operational Signals: This review relies entirely on transactional numbers. It lacks critical customer-facing touchpoints, such as customer service satisfaction (CSAT) scores, active billing dispute histories, or call center response times, which typically serve as immediate warnings for churn.**
